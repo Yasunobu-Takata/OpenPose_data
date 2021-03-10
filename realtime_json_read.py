@@ -16,7 +16,8 @@ while True:
     neck = position["1"]
     left_shoulder = position["2"]
     right_shoulder = position["5"]
-
+    
+    #確認用
     print(neck)
     print(left_shoulder)
     print(right_shoulder)
