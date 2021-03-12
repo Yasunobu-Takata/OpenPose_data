@@ -9,7 +9,7 @@ import winsound
 
 i = 0
 
-oprun = subprocess.Popen(["C:\optest\openposepre.bat"], shell=False, stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+oprun = subprocess.Popen(["C:\optest\openposepre.bat"], shell=False, stdout=subprocess.PIPE,stderr=subprocess.STDOUT) #openpose起動用batファイル起動
 
 while True:
     try:
