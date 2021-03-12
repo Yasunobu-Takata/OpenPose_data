@@ -9,7 +9,7 @@ i = 0
 
 while True:
     try:
-        all_files = glob.glob('/openpose/output/*.json') 
+        all_files = glob.glob('/openpose/output/*.json') #pathは各自変更
         open_file = open(all_files[i],'r')
         load_file = json.load(open_file)
         part = load_file["part_candidates"]
