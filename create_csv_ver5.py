@@ -4,11 +4,11 @@ import glob
 import csv
 import re
 import subprocess
-import winsound
+#import winsound
 
 i = 0
 
-oprun = subprocess.Popen(["C:\optest\openposepre.bat"], shell=False, stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+oprun = subprocess.Popen(["C:\optest\openposepre.bat"], shell=False, stdout=subprocess.PIPE,stderr=subprocess.STDOUT) #pathとbatファイル名各自変更
 
 while True:
     try:
