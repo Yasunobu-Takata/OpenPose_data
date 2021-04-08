@@ -1,30 +1,35 @@
-clear
+clear all
 i = 1;
 while 1
     try
-        all_files = py.glob.glob('/openpose/output/*.json');%%output‚Ìƒtƒ@ƒCƒ‹”Šm”F
-        cella = cellfun(@char,cell(all_files),'UniformOutput',false);%%jsonƒtƒ@ƒCƒ‹”z—ñ‰»
-        jfilea = cella{i};%%ƒtƒ@ƒCƒ‹ˆê‚Â‘I‘ğ
+        all_files = py.glob.glob('/openpose/output/*.json');%outputã®ãƒ•ã‚¡ã‚¤ãƒ«ç¢ºèª
+        cella = cellfun(@char,cell(all_files),'UniformOutput',false);%jsonãƒ•ã‚¡ã‚¤ãƒ«é…åˆ—åŒ–
+        jfilea = cella{i};%ãƒ•ã‚¡ã‚¤ãƒ«ä¸€ã¤é¸æŠ
     
-        %%ƒtƒ@ƒCƒ‹ŠJ‚¢‚Äƒf[ƒ^•ª‚¯‚é%%
+        %ãƒ•ã‚¡ã‚¤ãƒ«é–‹ã„ã¦ãƒ‡ãƒ¼ã‚¿åˆ†ã‘ã‚‹%%
         open_file = py.open(jfilea,'r');
         load_file = py.json.load(open_file);
         load_Mfile = struct(load_file);
         partCandidates = load_Mfile.part_candidates;
         parts_num = partCandidates{1};
-        parts_number = parts_num{'0'};%%—~‚µ‚¢êŠ‚Ì”‚É•Ï‚¦‚é
-        %%À•Wƒf[ƒ^
+        parts_number = parts_num{'1'};
+        cellP = cellfun(@double,cell(parts_number));
+        A = isempty(cellP);%ç©ºã®é…åˆ—ç¢ºèª
+        
+        %%åº§æ¨™ãƒ‡ãƒ¼ã‚¿
         partx = parts_number(1);
         party = parts_number(2);
         cPartx = cell(partx);
         cParty = cell(party);
         X = cellfun(@double,cPartx)
         Y = cellfun(@double,cParty)
-    
-        i = i + 1;
+        plot(X,Y,'g')
+        i = i + 1;         
     catch IndexError
-        disp('Waiting for the file to be created!')
+        if A == 1
+            i = i + 1;
+        elseif A == 0     
+            disp('Waiting for the file to be created!')            
+        end
     end
-
 end    
-   
